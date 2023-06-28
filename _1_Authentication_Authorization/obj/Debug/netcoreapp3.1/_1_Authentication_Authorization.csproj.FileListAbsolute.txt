@@ -876,3 +876,4 @@ E:\_6_Authentication_Authorization_Other_Project\_1_Authentication_Authorization
 E:\_6_Authentication_Authorization_Other_Project\_1_Authentication_Authorization\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.DiagnosticSource.dll
 E:\_6_Authentication_Authorization_Other_Project\_1_Authentication_Authorization\bin\Debug\netcoreapp3.1\refs\System.Text.Encodings.Web.dll
 E:\_6_Authentication_Authorization_Other_Project\_1_Authentication_Authorization\bin\Debug\netcoreapp3.1\refs\System.Text.Json.dll
+E:\_6_Authentication_Authorization_Other_Project\_1_Authentication_Authorization\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Navbar\Navbar.cshtml.g.cs

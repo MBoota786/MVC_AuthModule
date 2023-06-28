@@ -40,8 +40,15 @@ using DAL.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "E:\_6_Authentication_Authorization_Other_Project\_1_Authentication_Authorization\Views\_ViewImports.cshtml"
+using _1_Authentication_Authorization.ViewModel;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ee0bcbdca5d24c1bf76d6f992f6168042efae17", @"/Views/Home/Card.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2775e1ff7ea11d67e3aa9ed7e98485c18fa9d233", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7de8e1eb5ccb3e2a9bf8cb68b80bb2bf4a3bdfeb", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Home_Card : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<clsProductAuthentication>>
     #nullable disable
@@ -114,7 +121,7 @@ using DAL.Data;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                    </p>\r\n                </div>\r\n                <div class=\"card-footer\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ee0bcbdca5d24c1bf76d6f992f6168042efae175678", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ee0bcbdca5d24c1bf76d6f992f6168042efae175915", async() => {
                 WriteLiteral("Add To Cart");
             }
             );

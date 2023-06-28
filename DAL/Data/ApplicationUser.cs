@@ -15,8 +15,5 @@ namespace DAL.Data
     {
         public string Country { get; set; }
         public string profileImage { get; set; }
-
-        [NotMapped]
-        public IFormFile iImage { get; set; }
     }
 }

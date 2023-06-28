@@ -1,0 +1,52 @@
+﻿@model NavbarViewModel
+
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    </li>
+
+    @if (Model.IsSignedIn)
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+        </li>
+    }
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </li>
+</ul>
+
+@if (Model.IsSignedIn)
+{
+    <ul class="navbar-nav flex-lg-grow-0">
+        <li class="nav-item">
+            <a class="nav-link text-dark">
+                <img src="~/@Model.ProfilePicture" width="30px" height="30px" class="rounded-circle" />
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark"> @Model.UserName</a>
+        </li>
+        @if (Model.IsAdmin)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-warning" asp-area="" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
+            </li>
+        }
+        <li class="nav-item">
+            <a class="nav-link text-warning" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav flex-lg-grow-0">
+        <li class="nav-item">
+            <a class="nav-link text-primary" asp-area="" asp-controller="Account" asp-action="Signup">SignUp</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  text-primary" asp-area="" asp-controller="Account" asp-action="Signin">SignIn</a>
+        </li>
+    </ul>
+}
