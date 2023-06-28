@@ -20,15 +20,18 @@ namespace _3_Authentication_Authorization_Other_Project.Controllers
         //_________________________ 2nd _____________________
         private readonly UserManager<ApplicationUser> identityUser;
         private readonly SignInManager<ApplicationUser> identityManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         //_____ for Image ____
         private readonly IWebHostEnvironment iWebHost;
 
-        public AccountController(UserManager<ApplicationUser> identityUser , SignInManager<ApplicationUser> identityManager , IWebHostEnvironment iweb)
+        public AccountController(UserManager<ApplicationUser> identityUser , SignInManager<ApplicationUser> identityManager , IWebHostEnvironment iweb, RoleManager<IdentityRole> roleManager)
         {
             this.identityUser = identityUser;
             this.identityManager = identityManager;
             this.iWebHost = iweb;
+            //____ adding role ___
+            this.roleManager = roleManager;
         }
 
 
@@ -42,32 +45,28 @@ namespace _3_Authentication_Authorization_Other_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                //_____ Check Email _________ (by Default hotaa ha Validate)
+                // Check if the email already exists
                 var checkUser = await identityUser.FindByEmailAsync(signUp.Email);
-                if (checkUser == null)
+                if (checkUser != null)
                 {
-                    ViewBag.email = "No Match";
-                }
-                else
-                {
-                    ViewBag.email = "Email Aready Exist";
+                    ViewBag.email = "Email Already Exists";
                     return View(signUp);
                 }
-
 
                 var proImage = "images/plache.png";
                 if (signUp.iImage != null)
                 {
                     proImage = "images/ProfileImage/";
                     proImage += Guid.NewGuid().ToString() + "_" + signUp.iImage.FileName;
-                    var serverFolder = Path.Combine(iWebHost.WebRootPath, proImage);  // /images/ProfileImages/image.jpg
-                    using (var fileMode = new FileStream(serverFolder, FileMode.Create))  // /images/ProfileImages/image.jpg , fileMode.create
+                    var serverFolder = Path.Combine(iWebHost.WebRootPath, proImage);
+
+                    using (var fileMode = new FileStream(serverFolder, FileMode.Create))
                     {
                         await signUp.iImage.CopyToAsync(fileMode);
                     }
                 }
 
-                var appUer = new ApplicationUser
+                var appUser = new ApplicationUser
                 {
                     UserName = signUp.Email,
                     Email = signUp.Email,
@@ -75,21 +74,34 @@ namespace _3_Authentication_Authorization_Other_Project.Controllers
                     profileImage = proImage
                 };
 
-                var result = await identityUser.CreateAsync(appUer, signUp.Password);
-
+                var result = await identityUser.CreateAsync(appUser, signUp.Password);
 
                 if (result.Succeeded)
                 {
-                    await identityManager.SignInAsync(appUer, isPersistent: false);
+                    // Check if the "User" role exists
+                    var roleExists = await roleManager.RoleExistsAsync("User");
+                    if (!roleExists)
+                    {
+                        // If "User" role doesn't exist, create it
+                        await roleManager.CreateAsync(new IdentityRole("User"));
+                    }
+
+                    // Assign the "User" role to the newly registered user
+                    await identityUser.AddToRoleAsync(appUser, "User");
+
+                    await identityManager.SignInAsync(appUser, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+
             return View();
         }
+
 
 
 
