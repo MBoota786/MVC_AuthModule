@@ -142,23 +142,11 @@ namespace _3_Authentication_Authorization_Other_Project.Controllers
             return View();
         }
 
-
-        //________________________ Image Upload ________________________________
-        //public async Task<IActionResult> UserProfilePicMethod(string? id)
-        //{
-        //    var user = await identityUser.FindByIdAsync(id);
-        //    var profilPicName = user.profileImage;
-        //    if (profilPicName != null)
-        //    {
-        //        string profilePicPath = Path.Combine(iweb.WebRootPath, "images", profilPicName);
-        //        //return the image file path
-        //        return PhysicalFile(profilePicPath, "image/jpg");
-        //    }
-        //    //If no image exists return a placeholder image
-        //    var profilePicPathNull = Path.Combine(iweb.WebRootPath, "images", "plache.png");
-        //    return PhysicalFile(profilePicPathNull, "image/jpg");
-        //}
-
+        //______________________ Not Fund Page ________________________
+        public IActionResult notFound()
+        {
+            return View();
+        }
 
     }
 }

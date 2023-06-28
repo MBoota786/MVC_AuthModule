@@ -9,9 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace _3_Authentication_Authorization_Other_Project
@@ -54,13 +56,58 @@ namespace _3_Authentication_Authorization_Other_Project
 
 
             //__________________ Authentication ___________________
-            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<dbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                //_______________________"Identity configuration options" _______________________
+                // User settings
+                options.User.AllowedUserNameCharacters = "";
+                options.User.RequireUniqueEmail = true;
+
+                // Password settings
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredUniqueChars = 1;
+
+                // Lockout settings
+                options.Lockout.AllowedForNewUsers = true;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+
+                // SignIn settings
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
+
+                // Token settings
+                options.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
+                //options.Tokens.ChangeEmailTokenProvider = TokenOptions.DefaultEmailChangeTokenProvider;
+                options.Tokens.ChangePhoneNumberTokenProvider = TokenOptions.DefaultPhoneProvider;
+                options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
+                options.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultProvider;
+
+                // Other settings
+                options.Stores.MaxLengthForKeys = 128;
+                options.ClaimsIdentity.UserNameClaimType = ClaimTypes.Name;
+                options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier;
+                options.ClaimsIdentity.RoleClaimType = ClaimTypes.Role;
+            }).AddEntityFrameworkStores<dbContext>();
 
             //__________________ Cookie Pages (login,logout,..) ___________________________
             //services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Signin/");
-            services.ConfigureApplicationCookie(option =>
+            services.ConfigureApplicationCookie(options =>
             {
-                option.LoginPath = "/Account/Signin/";
+                //_______________________"Identity configuration options" _______________________
+                // Cookie settings
+                //options.Cookie.Name = ".AspNetCore.Identity.Application";
+                //options.Cookie.HttpOnly = true;
+                //options.ExpireTimeSpan = TimeSpan.FromDays(14);
+                //options.LoginPath = "/Account/Signin/";
+                //options.LogoutPath = "/Account/Logout/";
+                options.AccessDeniedPath = "/Account/notFound";
+                //options.SlidingExpiration = true;
             });
 
 
@@ -91,7 +138,8 @@ namespace _3_Authentication_Authorization_Other_Project
             //________________ Authorization _________________
             app.UseAuthorization();
 
-
+            //________________ Configure method Not Found _________________
+            app.UseStatusCodePagesWithReExecute("/Account/NotFound/{0}");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
