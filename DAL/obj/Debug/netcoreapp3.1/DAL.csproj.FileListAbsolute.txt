@@ -1,0 +1,26 @@
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.AssemblyReference.cache
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.GeneratedMSBuildEditorConfig.editorconfig
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DML.dll
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DML.pdb
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CopyComplete
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+G:\My Learning\2. My_Way\1. 1st Target (main)\3. Asp MVC Core\2. MVC core\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
+E:\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+E:\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+E:\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+E:\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DML.dll
+E:\_6_Authentication_Authorization_Other_Project\DAL\bin\Debug\netcoreapp3.1\DML.pdb
+E:\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.AssemblyReference.cache
+E:\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.GeneratedMSBuildEditorConfig.editorconfig
+E:\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+E:\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+E:\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache
+E:\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CopyComplete
+E:\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+E:\_6_Authentication_Authorization_Other_Project\DAL\obj\Debug\netcoreapp3.1\DAL.pdb

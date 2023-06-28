@@ -1,0 +1,32 @@
+﻿@model IEnumerable<clsProductAuthentication>
+
+@{
+    ViewData["Title"] = "Card";
+}
+
+<h1>Card</h1>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>@item.Id</h5>
+                    <h3>@item.title</h3>
+                    <p>
+                        @item.description
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Add To Cart</a>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+</div>

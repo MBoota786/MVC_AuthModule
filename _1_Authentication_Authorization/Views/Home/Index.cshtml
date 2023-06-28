@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="row">
+        @*_____________________ 1. Authontication _ Authorization Steps ________________________________*@
+        <div class="col-sm-6">
+            <h1 class="display-5">1. Authentitcation</h1>
+            <h3 class="text-primary">____ 1. SignUp ____</h3>
+                <ol>
+                    <li>Install => Identity Entity FramWork Core</li>
+                    <li>Add => Midlwear => App.Authentication =|= App.Authorization</li>
+                    <li>
+                        Add => Searvices  (1. Services.AddIdentity IdentityUser,IdentityRole>().AddEntityFrameworkStores ProductContext>();<br />
+                        IdentityUser -->Add User <br />
+                        IdentityRole -->Add role to User<br />
+                        AddEntityFrameWorkStores ==> user ContextFile
+                    </li>
+                    <li>
+                        create Context  ==> Inharite ==> IdentityDbContext class (not DbContext)
+                    </li>
+                    <li>
+                        create SignupModel ==> same name (its BuiltIn_Model of Identity)<br />
+                        Override properties of SignupModel ==>  these Propertis are Virtual in Model
+                    </li>
+                    <li>Add-migration / update-database</li>
+                    <li>Add => AccountController (kuch bhe name)</li>
+                    <li>Add => Signup ==> IActionMethod</li>
+                    <li>Add => Signup Post Async(await) ==> IActionMethod (1 time me 2 user Singup kr rhaan han to 1 by 1 account create ho ga)</li>
+                    <li>Add some Method in Constroctor</li>
+                    <li>Add Code => for  Createing User</li>
+                    <li>Add => Layout Code ===> (Toggle b/w  login / Logout)</li>
+                    <li>Add => Logout Method ===> To Logout</li>
+                </ol>
+            <br />
+            <h3 class="text-primary">____ 2. SignIn ____</h3>
+            
+                <ol>
+                    <li>Add (Model) / (View) for SignIn Check</li>
+                    <li>add Login Code On Post of SingIn Model</li>
+                </ol>
+            
+
+            <br /><br />
+            <h1>2. Authorization</h1>
+
+            <table class="table justify-content-center">
+                <thead>
+                    <tr>
+                        <th>Authentication</th>
+                        <th>Authorization</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Identitying Who the user is</td>
+                        <td>What User Can do after authentic</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Types of Authorization</h3>
+            <h3 class="text-danger">1. Action Level</h3>
+            
+                <ol>
+                    <li>add [Authorize] attribute => on Action</li>
+                </ol>
+            
+
+            <br /><br />
+            <h3 class="text-danger">2. Controller Level</h3>
+            
+                <ol>
+                    <li>add [Authorize] attribute => on Controller</li>
+                    <li>add [AllowAnonymousli] attr ==> on Action => which want to show></li>
+                </ol>
+            
+
+
+            <br /><br />
+            <h3 class="text-danger">3. Globle Level</h3>
+            
+                <ol>
+                    <li>add </li>
+                    <li>add [AllowAnonymousli] attr ==> on Action => which want to show></li>
+                </ol>
+            
+
+        </div>
+
+        @*_____________________ 1. Customizing  IdentityUser_Table ________________________________*@
+        <div class="col-sm-6">
+           <h1>3. Customizing IdenittyUsers</h1>
+           <ol>
+               <li>Add Custom Column in ---> IdentityUser Table </li>
+               <li>Create New Model ==> Inharite With  (IdentityUser)</li>
+               <li>Find All References  of (IdentityUser) --> Replace with ==> ApplicationUser</li>
+               <li>Add Properties / Desired Columns</li>
+               <li>Add ApplicationUser Model ===> in  IdentityUser Generic </li>
+               <li>Add migration --> Update-database </li>
+               <li>Add Same Properteis --> Signup --> [Model] [View] </li>
+           </ol>
+        </div>
+    </div>
+</div>

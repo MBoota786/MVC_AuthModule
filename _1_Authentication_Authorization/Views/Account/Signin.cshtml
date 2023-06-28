@@ -1,0 +1,55 @@
+﻿@model clsSignInAuthentication;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "";
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container mt-5 pt-5">
+
+    <h1 class="text-center">Login/Signin</h1>
+
+    <hr />
+
+    <div class="row justify-content-center">
+            <form asp-action="Signin">
+                @* _____ All Error Div _______ *@
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                @* _____ Create User (Authenticate / Register) _______ *@
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="isRemember" class="control-label"></label>
+                    <input type="checkbox" asp-for="isRemember" class="form-check" />
+                    <span asp-validation-for="isRemember" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>  
+            </form>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

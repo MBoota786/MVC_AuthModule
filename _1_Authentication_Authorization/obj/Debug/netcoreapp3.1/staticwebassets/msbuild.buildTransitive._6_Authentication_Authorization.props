@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\_6_Authentication_Authorization.props" />
+</Project>
