@@ -1,0 +1,54 @@
+﻿@addTagHelper *, _1_Authentication_Authorization
+@model IEnumerable<IdentityRole>
+
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<h1>Roles</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Roles
+            </th>
+            <th>
+                Users
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>
+                    @role.Id
+                </td>
+                <td>
+                    @if (@role.Name == "admin")
+                    {
+                        <span class="badge badge-dark badge-pill p-2 px-4">@role.Name</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-primary badge-pill p-2 px-4">@role.Name</span>
+                    }
+                </td>
+                <td user-role="@role.Id"></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@role.Id" class="btn btn-primary">Edit / Assign to User</a> |
+                    <a asp-action="Delete" asp-route-id="@role.Id" class="btn btn-danger confirmDeletion">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

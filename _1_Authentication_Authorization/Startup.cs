@@ -45,7 +45,7 @@ namespace _3_Authentication_Authorization_Other_Project
             //});
 
             //___________________ Connection_ 2 ___________________________
-            string con = "Server = SAQIB\\SAQIB;database = AuthenAuthorProjectDb;Trusted_Connection=true";
+            string con = "Server = SAQIB\\SAQIB;database = AuthenAuthorProjectDb;Trusted_Connection=true;MultipleActiveResultSets=true";
             services.AddDbContext<dbContext>(o =>
             {
                 o.UseSqlServer(con);

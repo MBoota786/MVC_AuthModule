@@ -35,11 +35,12 @@ namespace _1_Authentication_Authorization.Controllers
 
         //*******************  1. Action Level Authorize  *******************
         //[Authorize]
+        [Authorize("Employee")]
         public IActionResult Create()
         {
             return View();
         }
-        [Authorize]
+        [Authorize("Admin")]
         [HttpPost]
         public IActionResult Create(clsProductAuthentication product)
         {

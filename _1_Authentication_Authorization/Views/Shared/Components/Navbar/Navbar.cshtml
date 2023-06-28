@@ -30,8 +30,33 @@
         </li>
         @if (Model.IsAdmin)
         {
+            <!--
+                        insert into AspNetRoles values
+            ('6843f2b7-2a4f-4e9a-8e7e-8ab3b52e3a5d','Admin','ADMIN','85d56612-98bb-4457-aa97-d3cd5e198e21'),
+            ('2536f4a3-d10d-47d1-83a4-15dcafe27a10','User','USER','0f519a79-7aee-4edc-a582-1277ce57bc53'),
+            ('a59348b8-3961-4ce3-93ce-aae6b355c2c3','Employee','EMPLOYEE','9a94c63f-8b7e-48e4-9a94-65f81ad05fa8'),
+            ('9d9a52e4-4a0a-42db-8ed4-5e63f424a5bc','Manager','MANAGER','7c5a1f38-1c9d-42f6-aa9b-3e769ef2c32a')
+
+                        insert into AspNetUserRoles
+            values ('3fe0a76e-90a2-4f9c-a46d-7695284f7181','6843f2b7-2a4f-4e9a-8e7e-8ab3b52e3a5d') -- Saqib ,Admin
+            -->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Roles
+                </a>
+                <div class="dropdown-menu">
+                    <a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="Index">UserRoles</a>
+                    <a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="RoleList">Roles</a>
+                    <a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="CreateRole">Add Roles</a>
+                    <a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="AssignRole">Assign Roles</a>
+                </div>
+            </li>
+
             <li class="nav-item">
-                <a class="nav-link text-warning" asp-area="" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
+
+                
+
             </li>
         }
         <li class="nav-item">
