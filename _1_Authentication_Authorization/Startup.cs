@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -30,14 +31,6 @@ namespace _3_Authentication_Authorization_Other_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //*******************  3. Globle Level Authorize  *******************
-            //services.AddControllersWithViews(config =>    Same Work
-            services.AddControllersWithViews(config =>
-            {
-                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-                config.Filters.Add(new AuthorizeFilter(policy));
-            }).AddRazorRuntimeCompilation();
-
 
             //___________________ Connection_ 1 ___________________________
             //string con = "Server = SAQIB\\SAQIB;database = AuthenAuthorProjectDb;Trusted_Connection=true";
@@ -47,12 +40,11 @@ namespace _3_Authentication_Authorization_Other_Project
             //});
 
             //___________________ Connection_ 2 ___________________________
-            string con = "Server = SAQIB\\SAQIB;database = AuthenAuthorProjectDb;Trusted_Connection=true;MultipleActiveResultSets=true";
             services.AddDbContext<dbContext>(o =>
             {
-                o.UseSqlServer(con);
+                var connectionString = Configuration.GetConnectionString("MyDbConnection");
+                o.UseSqlServer(connectionString);
             });
-
 
 
             //__________________ Authentication ___________________
@@ -110,11 +102,17 @@ namespace _3_Authentication_Authorization_Other_Project
                 //options.SlidingExpiration = true;
             });
 
-
             //___________________ Globel Level Authorization ________________________
-            services.AddAuthorization();
+            //services.AddControllersWithViews(config =>    Same Work
+            services.AddControllersWithViews(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            }).AddRazorRuntimeCompilation();
+
 
         }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
