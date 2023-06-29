@@ -379,3 +379,6 @@ E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\n
 E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\_3_Auth_Module_AtoZ.dll
 E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\_3_Auth_Module_AtoZ.pdb
 E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\_3_Auth_Module_AtoZ.genruntimeconfig.cache
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Navbar\Navbar.cshtml.g.cs

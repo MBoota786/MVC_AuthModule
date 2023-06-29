@@ -1,34 +1,101 @@
-﻿<!DOCTYPE html>
+﻿@inject UserManager<ApplicationUser> userManager;
+@inject SignInManager<ApplicationUser> SignInManager;    
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - _3_Auth_Module_AtoZ</title>
+    <title>@ViewData["Title"] - _3_Authentication_Authorization_Other_Project</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
+
+    <!--_______________ 1. Not Good Way to Implement ___________________-->
+    <!--<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">_3_Auth_Module_AtoZ</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">My_App</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="navbar-collapse collapse d-sm-inline-flex">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
+                        @* _______ 1 Action Level Authorize _______ *@
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                            </li>
+                        }
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+
+                    @* _________ Right Side Navbar ______ *@
+                    @if (SignInManager.IsSignedIn(User)) //(false)
+                    {
+                        var user = await userManager.GetUserAsync(User);
+                        var profilePicture = user.profileImage;
+
+                        <ul class="navbar-nav flex-lg-grow-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark">
+                                    <img src="~/@profilePicture" width="30px" height="30px" class="rounded-circle"/>
+                                    @*<img src="@Url.Action("UserProfilePicMethod","Account",new { id = user.Id })" width="40px" height="40px" class="rounded-circle" asp-append-version="true"/>*@
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"> @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav flex-lg-grow-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-primary" asp-area="" asp-controller="Account" asp-action="Signup">SignUp</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  text-primary" asp-area="" asp-controller="Account" asp-action="Signin">SignIn</a>
+                            </li>
+                        </ul>
+                    }
+
                 </div>
             </div>
         </nav>
     </header>
+    -->
+
+    <!--_______________ 2. Best Way is Components ___________________-->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">My_App</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex">
+                    @await Component.InvokeAsync("Navbar")
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -37,7 +104,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - _3_Auth_Module_AtoZ - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - _3_Authentication_Authorization_Other_Project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -46,7 +46,6 @@ namespace _3_Auth_Module_AtoZ
             //});
 
             //___________________ Connection_ 2 ___________________________
-            string con = "Server = SAQIB\\SAQIB;database = AuthenAuthorProjectDb;Trusted_Connection=true;MultipleActiveResultSets=true";
             services.AddDbContext<dbContext>(o =>
             {
                 var connectionString = Configuration.GetConnectionString("MyDbConnection");
