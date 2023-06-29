@@ -36,6 +36,9 @@
             @Html.CheckBoxFor(m => m.RememberMe)
         </div>
     </div>
-
+    <!--------- Forget Password ----------->
+    <p>
+        <a href="@Url.Action("ForgotPassword", "Account")">Forgot your password?</a>
+    </p>
     <button type="submit" class="btn btn-primary">Login</button>
 }

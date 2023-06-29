@@ -80,7 +80,7 @@ namespace _3_Auth_Module_AtoZ
                 // Cookie settings
                 //options.Cookie.Name = ".AspNetCore.Identity.Application";
                 //options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromSeconds(60);//FromDays(14); m
+                options.ExpireTimeSpan = TimeSpan.FromHours(2);//FromDays(14); m
                 //options.LoginPath = "/Account/Signin/";
                 //options.LogoutPath = "/Account/Logout/";
                 options.AccessDeniedPath = "/Account/notFound/";

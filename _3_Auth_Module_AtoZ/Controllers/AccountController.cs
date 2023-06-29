@@ -24,7 +24,7 @@ namespace _3_Auth_Module_AtoZ.Controllers
         }
 
         //------------------------------------------------
-        //_________________ 1.  Registration + Confiurm Password _____________
+        //_________________ 1.  Registration + Confirm Email _____________
         //------------------------------------------------
         [HttpGet]
         public IActionResult Register()
@@ -127,6 +127,7 @@ namespace _3_Auth_Module_AtoZ.Controllers
         //------------------------------------------------
         //_________________ 2. Login + Check EmailConfirm _____________________
         //------------------------------------------------
+        //set forget password link  in  View
         [HttpGet]
         public IActionResult Login()
         {
@@ -193,6 +194,133 @@ namespace _3_Auth_Module_AtoZ.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+
+        //------------------------------------------------
+        //_________________ 3. Forget Password / Reset Password____________________
+        //------------------------------------------------
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            var ForgotPasswordViewModel = new ForgotPasswordViewModel();
+            return View(ForgotPasswordViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                {
+                    // User not found or email not confirmed
+                    ViewBag.Error = "Error";
+                    ViewBag.User = "Invalid Email";
+                    return View(model);
+                }
+
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+
+                // Send the password reset email
+                await _emailService.SendPasswordResetEmail(model.Email, callbackUrl);
+
+                return RedirectToAction("ForgotPasswordConfirmation");
+            }
+            ViewBag.Error = "Error";
+            // Invalid model state, redisplay the form
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPasswordJs(string Email)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(Email);
+                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                {
+                    // User not found or email not confirmed
+                    ViewBag.Error = "Error";
+                    ViewBag.User = "Invalid Email";
+                    return View();
+                }
+
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+
+                // Send the password reset email
+                await _emailService.SendPasswordResetEmail(Email, callbackUrl);
+
+                return RedirectToAction("ForgotPasswordConfirmation");
+            }
+            ViewBag.Error = "Error";
+            // Invalid model state, redisplay the form
+            return View();
+        }
+
+
+        public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+
+        //------------------------------------------------
+        //_________________ 4. Reset Password in Gmail  ____________________
+        //------------------------------------------------
+        [HttpGet]
+        public IActionResult ResetPassword(string token, string userId)
+        {
+            if (token == null || userId == null)
+            {
+                // Invalid token or user ID
+                return RedirectToAction("Error");
+            }
+
+            var model = new ResetPasswordViewModel { Token = token, UserId = userId };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if (user == null)
+                {
+                    // User not found
+                    ViewBag.Error = "Error";
+                    return RedirectToAction("Error");
+                }
+
+                var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    // Password reset successful
+                    return RedirectToAction("ResetPasswordConfirmation");
+                }
+
+                // If there are any errors, add them to the model state
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            // Invalid model state, redisplay the form
+            return View(model);
+        }
+
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
+        }
+
 
     }
 }

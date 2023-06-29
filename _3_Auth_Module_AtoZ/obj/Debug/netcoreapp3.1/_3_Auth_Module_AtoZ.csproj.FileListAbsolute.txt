@@ -386,3 +386,7 @@ E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\n
 E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Account\Error.cshtml.g.cs
 E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Account\EmailConfirmationSent.cshtml.g.cs
 E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Account\EmailConfirmed.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPasswordConfirmation.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Account\ResetPasswordConfirmation.cshtml.g.cs

@@ -20,13 +20,23 @@
 @if (Model.IsSignedIn)
 {
     <ul class="navbar-nav flex-lg-grow-0">
+        <li>
+            <a id="resetPasswordLink" style ="cursor:pointer" class="nav-link text-dark">Reset Password</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link text-dark">
-                <img src="~/@Model.ProfilePicture" width="30px" height="30px" class="rounded-circle" />
+                @{
+                    var imgPath = @Model.ProfilePicture != null ? "~/@Model.ProfilePicture" : "/images/plache.png";
+                    
+                }
+                <img src="@imgPath" width="30px" height="30px" class="rounded-circle" />
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark"> @Model.UserName</a>
+            @{
+                string userName= Model.UserName.Substring(0, 6);
+            }
+            <a class="nav-link text-dark"> @userName</a>
         </li>
         @if (Model.IsAdmin)
         {
@@ -46,10 +56,10 @@
                     Roles
                 </a>
                 <div class="dropdown-menu">
-                    <a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="Index">UserRoles</a>
+                    <!--<a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="Index">UserRoles</a>
                     <a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="RoleList">Roles</a>
                     <a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="CreateRole">Add Roles</a>
-                    <a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="AssignRole">Assign Roles</a>
+                    <a class="nav-link text-warning" asp-area="" asp-controller="Role" asp-action="AssignRole">Assign Roles</a>-->
                 </div>
             </li>
 
@@ -75,3 +85,26 @@ else
         </li>
     </ul>
 }
+<script>
+    document.getElementById("resetPasswordLink").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default navigation behavior of the anchor tag
+
+        // Create a form element
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "@Url.Action("ForgotPasswordJs", "Account")");
+
+        // Create an input element for the email
+        var emailInput = document.createElement("input");
+        emailInput.setAttribute("type", "hidden");
+        emailInput.setAttribute("name", "Email");
+        emailInput.setAttribute("value", "@User.Identity.Name");
+
+        // Add the input element to the form
+        form.appendChild(emailInput);
+
+        // Append the form to the document body and submit it
+        document.body.appendChild(form);
+        form.submit();
+    });
+</script>
