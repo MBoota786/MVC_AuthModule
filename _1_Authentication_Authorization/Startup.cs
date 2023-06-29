@@ -32,7 +32,7 @@ namespace _3_Authentication_Authorization_Other_Project
         {
             //*******************  3. Globle Level Authorize  *******************
             //services.AddControllersWithViews(config =>    Same Work
-            services.AddMvc(config =>
+            services.AddControllersWithViews(config =>
             {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
@@ -103,13 +103,16 @@ namespace _3_Authentication_Authorization_Other_Project
                 // Cookie settings
                 //options.Cookie.Name = ".AspNetCore.Identity.Application";
                 //options.Cookie.HttpOnly = true;
-                //options.ExpireTimeSpan = TimeSpan.FromDays(14);
+                options.ExpireTimeSpan = TimeSpan.FromSeconds(60);//FromDays(14); m
                 //options.LoginPath = "/Account/Signin/";
                 //options.LogoutPath = "/Account/Logout/";
-                options.AccessDeniedPath = "/Account/notFound";
+                options.AccessDeniedPath = "/Account/notFound/";
                 //options.SlidingExpiration = true;
             });
 
+
+            //___________________ Globel Level Authorization ________________________
+            services.AddAuthorization();
 
         }
 

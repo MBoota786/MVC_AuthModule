@@ -25,8 +25,6 @@ namespace _3_Authentication_Authorization_Other_Project.Controllers
             return View();
         }
 
-        //[Authorize] 
-        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();
