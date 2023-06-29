@@ -1,3 +1,4 @@
+using _3_Auth_Module_AtoZ.Services;
 using DAL.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -53,10 +54,23 @@ namespace _3_Auth_Module_AtoZ
             });
 
 
+            //__________________________ Token ________________________________
+            services.Configure<DataProtectionTokenProviderOptions>(options =>
+            {
+                options.TokenLifespan = TimeSpan.FromHours(2); // Set the token lifespan as desired
+            });
 
             //__________________ Authentication ___________________
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-            {}).AddEntityFrameworkStores<dbContext>();
+            {
+                // Configure the Two-Factor Authentication token provider
+                options.Tokens.ProviderMap["Default"] = new TokenProviderDescriptor(typeof(DataProtectorTokenProvider<ApplicationUser>));
+            })
+            .AddEntityFrameworkStores<dbContext>()
+            .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
+
+            
+            
 
             //__________________ Cookie Pages (login,logout,..) ___________________________
             //services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Signin/");
@@ -74,8 +88,9 @@ namespace _3_Auth_Module_AtoZ
             });
 
 
-            //___________________ Globel Level Authorization ________________________
-            //services.AddAuthorization();
+
+            //___________________ Email Services ________________________
+            services.AddTransient<EmailService>();
 
         }
 
