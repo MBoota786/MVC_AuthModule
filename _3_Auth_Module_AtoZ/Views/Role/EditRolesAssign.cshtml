@@ -1,0 +1,22 @@
+﻿@model EditRolesViewModel
+
+<h1>Edit Roles Assign - @Model.UserName</h1>
+
+@using (Html.BeginForm("UpdateRolesAssign", "Role"))
+{
+    <div>
+        <input type="hidden" name="UserId" value="@Model.UserId" />
+        <p>Current Roles: <b>@string.Join(", ", Model.AllRoles.Where(r => r.IsSelected).Select(r => r.RoleName))</b></p>
+        <p>Select Roles:</p>
+        <ul>
+            @foreach (var role in Model.AllRoles)
+            {
+                <li>
+                    <input type="checkbox" name="SelectedRoles" value="@role.RoleName" @(role.IsSelected ? "checked" : "") />
+                    <label>@role.RoleName</label>
+                </li>
+            }
+        </ul>
+        <button type="submit">Update</button>
+    </div>
+}

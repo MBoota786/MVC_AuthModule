@@ -41,21 +41,28 @@ using DML._1_clsAuthentication;
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\Views\_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
+#line 5 "E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\Views\_ViewImports.cshtml"
+using DML._3_Auth_Module;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 7 "E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\Views\_ViewImports.cshtml"
 using DAL.Data;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"27254be66e8485c695e6ad3a8a17422f2a4df0bb", @"/Views/Account/EmailConfirmationSent.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0cc0d59f249e30a98aa11f44e7a67ce6d56d4d06", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"732f784f33d09b117ebac854a6b001336ee1b9e5", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Account_EmailConfirmationSent : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable

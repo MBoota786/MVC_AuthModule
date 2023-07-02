@@ -1,0 +1,34 @@
+﻿@model List<UserViewModel>
+
+<h1>User List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>S No</th>
+            <th>User</th>
+            <th>Having Roles</th>
+            <th>Having Claims</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            var user = Model[i];
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@user.UserName</td>
+                <td>@string.Join(", ", user.Roles)</td>
+                <td>@string.Join(", ", user.Claims.Select(c => c.Value))</td>
+                <td>
+                    <a href="@Url.Action("EditRolesAssign", new { userId = user.UserId })">Mange Roles</a> |
+                    @*______ 1. By Static File ________*@
+                    <a href="@Url.Action("ManageUserClaims", new { userId = user.UserId })">Manage Claims St</a> |
+                    @*______ 2. By Database________*@
+                    <a href="@Url.Action("ManageUserClaimsDb", new { userId = user.UserId })">Manage Claims Db</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

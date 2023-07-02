@@ -92,6 +92,8 @@ namespace _3_Auth_Module_AtoZ
             //___________________ Email Services ________________________
             services.AddTransient<EmailService>();
 
+
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

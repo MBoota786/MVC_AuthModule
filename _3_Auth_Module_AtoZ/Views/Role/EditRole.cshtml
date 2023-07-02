@@ -1,0 +1,13 @@
+﻿@model EditRoleViewModel
+
+<h1>Edit Role</h1>
+
+<form asp-action="EditRole" method="post">
+    <input type="hidden" asp-for="RoleId" />
+    <div class="form-group">
+        <label asp-for="RoleName">Role Name</label>
+        <input asp-for="RoleName" class="form-control" />
+        <span asp-validation-for="RoleName" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

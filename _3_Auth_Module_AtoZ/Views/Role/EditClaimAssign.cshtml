@@ -1,0 +1,21 @@
+﻿@model EditClaimViewModel
+
+<h1>Edit Claim Assign - @Model.UserName</h1>
+
+@using (Html.BeginForm("UpdateClaimAssign", "User"))
+{
+    <div>
+        <input type="hidden" name="UserId" value="@Model.UserId" />
+        <p>Current Claims:</p>
+        <ul>
+            @foreach (var claim in Model.AllClaims)
+            {
+                <li>
+                    <input type="checkbox" name="SelectedClaims" value="@claim.Type" @(Model.SelectedClaims.Any(c => c.Type == claim.Type) ? "checked" : "") />
+                    <label>@claim.Type: @claim.Value</label>
+                </li>
+            }
+        </ul>
+        <button type="submit">Update</button>
+    </div>
+}
