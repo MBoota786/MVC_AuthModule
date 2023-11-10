@@ -1,3 +1,4 @@
+using _3_Auth_Module_AtoZ.Component.IdentityProfileComponent;
 using _3_Auth_Module_AtoZ.Services;
 using DAL.Data;
 using Microsoft.AspNetCore.Authorization;
@@ -30,6 +31,10 @@ namespace _3_Auth_Module_AtoZ
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ProfileViewComponent>();
+
+
+
             //*******************  3. Globle Level Authorize  *******************
             //services.AddControllersWithViews(config =>    Same Work
             services.AddControllersWithViews(config =>

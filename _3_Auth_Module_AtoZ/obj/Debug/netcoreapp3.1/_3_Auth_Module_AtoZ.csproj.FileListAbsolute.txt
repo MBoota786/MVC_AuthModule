@@ -445,3 +445,7 @@ E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\n
 E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Role\CreateClaim.cshtml.g.cs
 E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Role\ManageUserClaimsDb.cshtml.g.cs
 E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Role\EditClaim.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Profile\Index.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\AccountSettings\AccountSettings.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\AccountSettings\Default.cshtml.g.cs
+E:\_6_Authentication_Authorization_Other_Project\_3_Auth_Module_AtoZ\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\IdentityProfileComponent\Profile\Profile.cshtml.g.cs

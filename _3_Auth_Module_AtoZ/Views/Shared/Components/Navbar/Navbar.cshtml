@@ -26,8 +26,7 @@
         <li class="nav-item">
             <a class="nav-link text-dark">
                 @{
-                    var imgPath = @Model.ProfilePicture != null ? "~/@Model.ProfilePicture" : "/images/plache.png";
-                    
+                    var imgPath = @Model.ProfilePicture != null ? "~/@Model.ProfilePicture" : "/images/plache.png";        
                 }
                 <img src="@imgPath" width="30px" height="30px" class="rounded-circle" />
             </a>
@@ -36,7 +35,7 @@
             @{
                 string userName= Model.UserName.Substring(0, 6);
             }
-            <a class="nav-link text-dark"> @userName</a>
+            <a class="nav-link text-dark" asp-action="Index" asp-controller="Profile"> @userName</a>
         </li>
         @if (Model.IsAdmin)
         {
